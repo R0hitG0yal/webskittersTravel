@@ -11,8 +11,8 @@ const SignUp = () => {
     }
  return <Card 
  image='' 
- heading='hghgg' 
- subheading='jkhjkbdn' 
+ heading='Get Started' 
+ subheading='Create an account by using the form below' 
  setEmail={setEmail} 
  setPassword={setPassword}
  handleClick={handleClick}/>  
