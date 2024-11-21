@@ -11,10 +11,10 @@ export default function Home() {
   return (<div className="w-[screen] h-[screen] border-2">
     <Image
   src={image}
-  width={500}
+  width={1000}
   height={1000}
   alt="Splash Image"
-  className="m-auto mt-16 "
+  className="m-auto"
   />
   </div>
   );
