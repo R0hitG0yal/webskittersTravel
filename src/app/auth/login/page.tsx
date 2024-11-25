@@ -23,7 +23,7 @@ export default function Home() {
                 const token = await authUser.user.getIdToken();
                 console.log(token);
                 localStorage.setItem('token', token);
-                // router.push('/logged_in');
+                router.push('/dashboard');
             }
         } catch (error: any) {
             setError(error.message);

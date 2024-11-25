@@ -8,6 +8,7 @@ import { FacebookAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 import { Container, Row, Col, Button, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Card({ heading, subheading, email, password, error, setError, setEmail, setPassword, handleClick, signOrLog }:
     {
@@ -22,6 +23,7 @@ export default function Card({ heading, subheading, email, password, error, setE
         error: string | null,
         setError: Dispatch<SetStateAction<string | null>>,
     }) {
+    const navigation = useRouter();
     const auth = getAuth();
     const handleGoogleLogin = () => {
         const provider = new GoogleAuthProvider(); // Ensure this is initialized correctly
@@ -37,6 +39,7 @@ export default function Card({ heading, subheading, email, password, error, setE
                 // The signed-in user info.
                 const user = result.user;
                 console.log('User Info:', user);
+                navigation.push('/dashboard');
 
             })
             .catch((error) => {
@@ -72,6 +75,7 @@ export default function Card({ heading, subheading, email, password, error, setE
                 const credential = FacebookAuthProvider.credentialFromResult(result);
                 const accessToken = credential?.accessToken || "";
                 localStorage.setItem('token', accessToken);
+                navigation.push('/dashboard');
 
 
                 // IdP data available using getAdditionalUserInfo(result)
@@ -107,7 +111,7 @@ export default function Card({ heading, subheading, email, password, error, setE
                         onSubmit={handleClick}
                     >    {error && <Alert color="danger">{error}</Alert>}
                         <FormGroup row >
-                            <div className="text-left pl-[16%] py-1">
+                            <div className="text-left pl-[4%] py-1">
                                 <Label for="loginEmail" sm={4} >Email</Label>
                             </div>
                             <Col sm={8}>
@@ -123,7 +127,7 @@ export default function Card({ heading, subheading, email, password, error, setE
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <div className="text-left pl-[16%] py-1">
+                            <div className="text-left pl-[4%] py-1">
                                 <Label for="loginEmail" sm={4} >Password</Label>
                             </div>
                             <Col sm={8}>

@@ -27,7 +27,7 @@ export default function Home() {
         createUserWithEmailAndPassword(email, password)
             .then(() => {
                 console.log("Success. The user is created in firebase");
-                router.push("/auth/login");
+                router.push("/dashboard");
             })
             .catch(error => setError(error.message));
     };
